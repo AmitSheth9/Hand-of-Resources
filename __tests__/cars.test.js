@@ -2,6 +2,8 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Car = require('../lib/models/Car');
+
 
 describe('backend routes', () => {
   beforeEach(() => {
@@ -25,7 +27,7 @@ describe('backend routes', () => {
   });
 
   it('should get all cars', async () => {
-    await Cars.insert({
+    await Car.insert({
       make: 'Honda',
       color: 'gold'
     });
@@ -43,6 +45,16 @@ describe('backend routes', () => {
       color: 'gold'
     }
     ]);
+  });
+  it('should get a car by id', async () => { 
+    const car = await Car.insert({
+      make: 'Toyota',
+      color: 'black'
+    });
+    const res = await request(app)
+      .get(`/cars/${car.id}`);
+
+    expect(res.body).toEqual(car);
   });
 });
 
