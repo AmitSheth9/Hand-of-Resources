@@ -27,3 +27,16 @@ VALUES (
     'United States',
     3.797
 );
+
+DROP TABLE IF EXISTS sports;
+
+CREATE TABLE sports (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    sport TEXT NOT NULL,
+    players INT NOT NULL
+);
+
+INSERT INTO sports (sport, players) VALUES (
+    'baseball',
+    9
+);
