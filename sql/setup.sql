@@ -20,10 +20,10 @@ DROP TABLE IF EXISTS countries;
 CREATE TABLE countries (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     country TEXT NOT NULL,
-    landmass decimal NOT NULL
+    landmass DEC NOT NULL
 );
 INSERT INTO countries (country, landmass) 
 VALUES (
     'United States',
-    '3.797'
+    3.797
 );

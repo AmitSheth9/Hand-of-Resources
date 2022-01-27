@@ -22,11 +22,11 @@ describe('backend routes', () => {
     expect(res.body).toEqual({ 
       id: expect.any(String),
       country: 'mexico',
-      landmass: .761 
+      landmass: '0.761' 
     });
   });
 
-  it('should get all cars', async () => {
+  it('should get all countries', async () => {
     await Country.insert({
       country: 'china',
       landmass: 3.705
@@ -37,16 +37,16 @@ describe('backend routes', () => {
     expect(res.body).toEqual([{
       id: expect.any(String),
       country: 'United States',
-      landmass: 3.797
+      landmass: '3.797'
     },
     {
       id: expect.any(String),
       country: 'china',
-      landmass: 3.705
+      landmass: '3.705'
     }
     ]);
   });
-  it('should get a car by id', async () => { 
+  it('should get a country by id', async () => { 
     const country = await Country.insert({
       country: 'mexico',
       landmass: .761 
@@ -54,10 +54,12 @@ describe('backend routes', () => {
     const res = await request(app)
       .get(`/countries/${country.id}`);
 
+    console.log(res.body);
+
     expect(res.body).toEqual(country);
   });
 
-  it('should update a car', async () => {
+  it('should update a country', async () => {
     const country = await Country.insert({
       country: 'mexico',
       landmass: .761 
@@ -71,12 +73,12 @@ describe('backend routes', () => {
     const expected = {
       id: expect.any(String),
       country: 'china',
-      landmass: 3.705
+      landmass: '3.705'
     };
     console.log(res.body);  
     expect(res.body).toEqual(expected);
   });
-  it('should delete a car', async () => {
+  it('should delete a country', async () => {
     const country = await Country.insert({
       country: 'china',
       landmass: 3.705
