@@ -56,5 +56,35 @@ describe('backend routes', () => {
 
     expect(res.body).toEqual(car);
   });
+
+  it('should update a car', async () => {
+    const car = await Car.insert({
+      make: 'xfinity',
+      color: 'black'
+    });
+
+    const res = await request(app)
+      .patch(`/cars/${car.id}`)
+      .send({ color: 'red' });
+
+    const expected = {
+      id: expect.any(String),
+      make: 'xfinity',
+      color: 'red'
+    };
+    console.log(res.body);  
+    expect(res.body).toEqual(expected);
+  });
+  it('should delete a car', async () => {
+    const car = await Car.insert({
+      make: 'honda',
+      color: 'gold'
+    });
+
+    const res = await request(app)
+      .delete(`/cars/${car.id}`);
+
+    expect(await Car.getById(car.id)).toBeNull();
+  });
 });
 
