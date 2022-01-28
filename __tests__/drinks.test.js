@@ -71,10 +71,10 @@ describe('backend routes', () => {
   });
   it('should delete a drink by id', async () => {
     const drink = await Drink.insert(testDrink);
-    const res = await request(app)
-      .delete(`/drinks/${drink.id}`);
+    const res = await request(app).delete(`/drinks/${drink.id}`);
+    console.log(res.body);
 
-    expect(await Drink.getById(drink.id)).toBeNull();
+    console.log(expect(await Drink.getById(drink.id)).toBeNull());
 
   });
 });
