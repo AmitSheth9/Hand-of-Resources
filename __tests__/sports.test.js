@@ -3,7 +3,6 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const Sport = require('../lib/models/Sport');
-const Country = require('../lib/models/Country');
 
 
 describe('backend routes', () => {

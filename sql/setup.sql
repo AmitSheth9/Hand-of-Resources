@@ -2,6 +2,9 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 
 DROP TABLE IF EXISTS cars;
+DROP TABLE IF EXISTS countries;
+DROP TABLE IF EXISTS sports;
+DROP TABLE IF EXISTS drinnks;
 
 CREATE TABLE cars (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -15,7 +18,7 @@ VALUES (
     'Silver'
 );
 
-DROP TABLE IF EXISTS countries;
+
 
 CREATE TABLE countries (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -28,7 +31,7 @@ VALUES (
     3.797
 );
 
-DROP TABLE IF EXISTS sports;
+
 
 CREATE TABLE sports (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -40,3 +43,15 @@ INSERT INTO sports (sport, players) VALUES (
     'baseball',
     9
 );
+
+CREATE TABLE drinks (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    drink TEXT NOT NULL,
+    carbonated BOOLEAN NOT NULL
+);
+
+INSERT INTO drinks (drink, carbonated) VALUES (
+    'coke',
+    true
+);
+
